@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Montserrat } from "@next/font/google";
+import HomeButton from "./HomeButton/home";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -15,7 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} mx-32 my-12 `}>{children}</body>
+      <body className={`${montserrat.className} mx-32 my-12 `}>
+        <HomeButton />
+
+        {children}
+      </body>
     </html>
   );
 }

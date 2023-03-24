@@ -1,20 +1,45 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import Searchbar from "./Searchbar/page";
 
 // whenever want to use state effect or button in next13 its from client side not server side so we should add  at the top "user client"
-export default async function Home() {
-  const data = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`
-  );
-  const res = await data.json();
-  console.log(res);
+export default function Home() {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=7c09c2c875a816fd1db55b08daff219a`
+    );
+    const res = await data.json();
+    setData(res);
+    console.log(res);
+  };
+
+  const search = async (query) => {
+    try {
+      let filteredData = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=7c09c2c875a816fd1db55b08daff219a&query=${query}`
+      );
+      let response = await filteredData.json();
+      setData(response);
+      console.log("Search results:", response);
+      // return data;
+    } catch (error) {
+      console.error("Search error:", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
-      <Searchbar />
+      <Searchbar search={search} />
       <main>
         <div className="grid gap-16 grid-cols-fluid">
-          {res.results.map((movie) => (
+          {data?.results?.map((movie) => (
             <Movie
               key={movie.id}
               id={movie.id}
