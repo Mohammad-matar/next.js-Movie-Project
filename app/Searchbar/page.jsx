@@ -22,7 +22,9 @@ export default function Searchbar() {
 
   const search = async (query) => {
     try {
-      const response = await fetch(`/search?q=${query}`);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=7c09c2c875a816fd1db55b08daff219a&query=${query}`
+      );
       const data = await response.json();
       console.log("Search results:", data);
       return data;
