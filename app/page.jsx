@@ -16,6 +16,7 @@ export default async function Home() {
         {res.results.map((movie) => (
           <Movie
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             poster_path={movie.poster_path}
             release_date={movie.release_date}
