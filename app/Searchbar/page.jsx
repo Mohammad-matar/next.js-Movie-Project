@@ -21,10 +21,7 @@ export default function Searchbar({ search }) {
   };
 
   return (
-    <form
-      className="flex justify-end mb-4 fixed top-2 left-0 right-2"
-      onSubmit={handleSearchSubmit}
-    >
+    <form className="flex justify-end my-10" onSubmit={handleSearchSubmit}>
       <input
         type="text"
         placeholder="Search"

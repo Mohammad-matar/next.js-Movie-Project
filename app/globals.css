@@ -103,7 +103,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+.image_hovering:hover{
+  border: 1px solid red;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

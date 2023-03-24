@@ -13,7 +13,6 @@ export default function Home() {
     );
     const res = await data.json();
     setData(res);
-    console.log(res);
   };
 
   const search = async (query) => {
@@ -34,9 +33,20 @@ export default function Home() {
     getData();
   }, []);
 
+  const handleClick = () => {
+    getData();
+  };
   return (
-    <>
-      <Searchbar search={search} />
+    <div className="menu_Container">
+      <div className="flex justify-between">
+        <button
+          className="my-10 ml-2 py-2 px-4 bg-green-500 text-white rounded-md"
+          onClick={handleClick}
+        >
+          Home
+        </button>
+        <Searchbar search={search} />
+      </div>
       <main>
         <div className="grid gap-16 grid-cols-fluid">
           {data?.results?.map((movie) => (
@@ -50,6 +60,6 @@ export default function Home() {
           ))}
         </div>
       </main>
-    </>
+    </div>
   );
 }
