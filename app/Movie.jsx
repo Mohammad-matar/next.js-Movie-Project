@@ -10,8 +10,8 @@ export default function Movie({ title, id, poster_path, release_date }) {
       <Link href={`/${id}`}>
         <Image
           src={imagePath + poster_path}
-          width={800}
-          height={800}
+          width={600}
+          height={600}
           alt={title}
         />
       </Link>

@@ -20,9 +20,14 @@ export default async function MovieDetails({ params }) {
   const res = await data.json();
   console.log(res);
 
+  // const handleBackButtonClick = () => {
+  //   router.back();
+  // };
+
   return (
     <div>
       <div>
+        {/* <button onClick={() => router.back()}>Back</button> */}
         <h2 className="text-4xl">{res.title}</h2>
         <h1 className="text-lg ">{res.release_date}</h1>
         <h2>Runtime: {res.runtime} minutes</h2>
@@ -38,6 +43,8 @@ export default async function MovieDetails({ params }) {
           property
         />
         <p>{res.overview}</p>
+        <br />
+        <p>Vote: {res.vote_average}</p>
       </div>
     </div>
   );
